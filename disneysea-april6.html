@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>DisneySea — April 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1014;
+    --red: #c0392b;
+    --red-light: #f5e6e4;
+    --red-mid: #e8c4be;
+    --blush: #fdf3f1;
+    --stone: #8c7b78;
+    --parchment: #faf7f4;
+    --gold: #c9a96e;
+    --white: #ffffff;
+    --teal: #2a9d8f;
+    --teal-light: #e6f4f2;
+    --coral: #c97b4e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: var(--ink);
+    padding: 48px 24px 40px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 15% 50%, rgba(192,57,43,0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 70% at 85% 30%, rgba(201,169,110,0.12) 0%, transparent 60%),
+      linear-gradient(to bottom, rgba(26,16,20,0.3) 0%, rgba(26,16,20,0.75) 100%);
+  }
+
+  .hero-sea {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red-mid);
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link::before { content: '←'; }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(30px, 6vw, 52px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .hero-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+  .hero-sub { font-size: 12px; color: var(--red-mid); letter-spacing: 0.1em; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,247,244,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--red-mid);
+    padding: 0 24px;
+  }
+
+  .nav-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  nav a {
+    display: block;
+    padding: 14px 16px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  nav a:hover { color: var(--red); border-bottom-color: var(--red); }
+
+  /* MAIN */
+  main { max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* SECTION HEADERS */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin: 56px 0 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--red-mid);
+  }
+
+  .section-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 44px;
+    color: var(--red-mid);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .section-title span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 4px;
+  }
+
+  /* PROGRESS */
+  .progress-card {
+    background: var(--white);
+    border: 1px solid var(--red-mid);
+    border-left: 4px solid var(--red);
+    padding: 18px 20px;
+  }
+
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .progress-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    font-weight: 500;
+  }
+
+  .progress-count {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--red);
+  }
+
+  .progress-track {
+    height: 4px;
+    background: var(--red-light);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  /* RULES */
+  .rules-wrap {
+    background: var(--white);
+    border: 1px solid var(--red-mid);
+    border-top: none;
+    padding: 14px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .rule-pill {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--red-mid);
+    color: var(--stone);
+    background: var(--blush);
+    white-space: nowrap;
+  }
+
+  /* BLOCKS */
+  .blocks-grid { display: grid; gap: 8px; }
+
+  .block {
+    background: var(--white);
+    border: 1px solid var(--red-mid);
+    border-left: 4px solid var(--red);
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .block:hover { box-shadow: 3px 3px 0 var(--red-mid); }
+
+  .block.done {
+    border-left-color: var(--teal);
+    background: var(--teal-light);
+  }
+
+  .block-header {
+    display: grid;
+    grid-template-columns: 60px 1fr auto 36px;
+    align-items: center;
+    padding: 12px 16px 10px 16px;
+    gap: 10px;
+  }
+
+  .block-time {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .block.done .block-time { color: var(--stone); }
+
+  .block-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .block.done .block-title {
+    color: var(--stone);
+    text-decoration: line-through;
+    text-decoration-color: rgba(140,123,120,0.4);
+  }
+
+  .block-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .block.done .block-badge { background: var(--teal); }
+
+  .check-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--red-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    color: transparent;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--white);
+  }
+  .block.done .check-circle {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+  }
+
+  .block-content {
+    padding: 0 16px 14px 86px;
+    transition: opacity 0.2s;
+  }
+  .block.done .block-content { opacity: 0.45; }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: 12.5px;
+    color: var(--ink);
+    opacity: 0.8;
+  }
+
+  .step-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--stone);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .step.highlight { opacity: 1; }
+  .step.highlight .step-dot { background: var(--red); }
+
+  .step.app-action { color: var(--teal); opacity: 1; font-size: 12px; }
+  .step.app-action .step-dot { background: var(--teal); }
+
+  .step.rule-note { color: var(--stone); font-size: 11px; font-style: italic; opacity: 1; }
+  .step.rule-note .step-dot { background: var(--red-mid); }
+
+  .meal-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: var(--blush);
+    color: var(--coral);
+    border: 1px solid #f0d9c0;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  /* DONE BANNER */
+  .done-banner {
+    display: none;
+    text-align: center;
+    padding: 40px 24px;
+    background: var(--white);
+    border: 1px solid var(--red-mid);
+    border-left: 4px solid var(--gold);
+    margin-top: 8px;
+  }
+  .done-banner.show { display: block; }
+  .done-banner-emoji { font-size: 40px; margin-bottom: 12px; }
+  .done-banner-text {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .done-banner-sub { font-size: 13px; color: var(--stone); }
+
+  /* SUMMARY */
+  .summary-card {
+    background: var(--white);
+    border: 1px solid var(--red-mid);
+    padding: 20px;
+  }
+
+  .summary-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .one-liner {
+    font-size: 12.5px;
+    color: var(--stone);
+    line-height: 1.9;
+  }
+  .one-liner strong { color: var(--ink); font-weight: 500; }
+
+  .reset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 7px 18px;
+    background: transparent;
+    border: 1px solid var(--red-mid);
+    border-radius: 20px;
+    color: var(--stone);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .reset-btn:hover { border-color: var(--red); color: var(--red); }
+</style>
+</head>
+<body data-page="disney">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-sea" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <ellipse cx="400" cy="160" rx="280" ry="80" fill="#c0392b" opacity="0.3"/>
+    <ellipse cx="200" cy="120" rx="140" ry="50" fill="#c9a96e" opacity="0.2"/>
+    <g fill="white">
+      <circle cx="80" cy="30" r="1.2"/><circle cx="200" cy="15" r="0.8"/>
+      <circle cx="350" cy="25" r="1.1"/><circle cx="500" cy="10" r="1.4"/>
+      <circle cx="650" cy="30" r="0.9"/><circle cx="720" cy="18" r="1.2"/>
+      <circle cx="150" cy="55" r="0.7"/><circle cx="450" cy="45" r="1"/>
+      <circle cx="600" cy="55" r="0.8"/><circle cx="760" cy="50" r="1.1"/>
+    </g>
+    <path d="M0,140 Q200,120 400,135 Q600,150 800,130" fill="none" stroke="#c0392b" stroke-width="0.8" opacity="0.35"/>
+    <path d="M0,165 Q200,148 400,158 Q600,168 800,152" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.25"/>
+  </svg>
+  <div class="hero-content">
+    <a class="back-link" href="japan_guide.html">Trip Itinerary</a>
+    <div class="hero-eyebrow">Tokyo DisneySea · Monday April 6</div>
+    <div class="hero-title">Your Day,<br><em>Mapped.</em></div>
+    <div class="hero-sub">Tap any stop to check it off</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#progress">Progress</a>
+    <a href="#itinerary">Itinerary</a>
+    <a href="#summary">Summary</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- PROGRESS -->
+  <div class="section-header" id="progress">
+    <div class="section-num">01</div>
+    <div class="section-title"><span>How far along</span>Progress</div>
+  </div>
+  <div class="progress-card">
+    <div class="progress-top">
+      <div class="progress-label">Stops completed</div>
+      <div class="progress-count" id="prog-count">0 / 17</div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+  </div>
+
+  <!-- ITINERARY -->
+  <div class="section-header" id="itinerary">
+    <div class="section-num">02</div>
+    <div class="section-title"><span>Tap to check off</span>The Day</div>
+  </div>
+
+  <div class="rules-wrap">
+    <div class="rule-pill">⏱ Wait >60 min → skip</div>
+    <div class="rule-pill">🚤 Gondola ≤30 min → do it</div>
+    <div class="rule-pill">🌊 SeaRider ≤25 min → do it</div>
+    <div class="rule-pill">📱 App × 2 only</div>
+  </div>
+
+  <div class="blocks-grid">
+
+    <div class="block" data-id="arrive" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">08:00</div>
+        <div class="block-title">Arrive</div>
+        <div class="block-badge">1</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step"><div class="step-dot"></div>Get there 08:00–08:15</div>
+        <div class="step"><div class="step-dot"></div>Line up, relax, hydrate</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="app1" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">09:00</div>
+        <div class="block-title">Enter + App</div>
+        <div class="block-badge" style="background:var(--teal)">→</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step app-action"><div class="step-dot"></div>📱 1st — Buy Frozen DPA ❄️</div>
+        <div class="step app-action"><div class="step-dot"></div>📱 2nd — Buy Rapunzel DPA 🌺</div>
+        <div class="step app-action"><div class="step-dot"></div>📱 Standby Pass for 3rd — try once only:</div>
+        <div class="step rule-note"><div class="step-dot"></div>Got Frozen + Rapunzel → standby Peter Pan 🪝</div>
+        <div class="step rule-note"><div class="step-dot"></div>Got Frozen + Peter Pan → standby Rapunzel 🌺</div>
+        <div class="step highlight"><div class="step-dot"></div><strong>CLOSE APP →</strong> don't open again until App Check #2</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="soaring" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">09:05</div>
+        <div class="block-title">Soaring</div>
+        <div class="block-badge">2</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>Enter → go <strong>RIGHT</strong> → walk along the water ⭐</div>
+        <div class="step"><div class="step-dot"></div>Follow signs: "American Waterfront" → "Soaring"</div>
+        <div class="step"><div class="step-dot"></div>~3–5 min walk — big hangar = you're there</div>
+        <div class="step rule-note"><div class="step-dot"></div>Don't stop, don't open map, follow crowd going right</div>
+        <div class="step rule-note"><div class="step-dot"></div>⚠️ Going left = wrong direction</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="toystory" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">~09:45</div>
+        <div class="block-title">Toy Story Mania</div>
+        <div class="block-badge">3</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step"><div class="step-dot"></div>Right beside Soaring — walk over</div>
+        <div class="step rule-note"><div class="step-dot"></div>Skip if wait >60 min</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="aquatopia" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">10:30</div>
+        <div class="block-title">Aquatopia</div>
+        <div class="block-badge">4</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step"><div class="step-dot"></div>Port Discovery</div>
+        <div class="step rule-note"><div class="step-dot"></div>Fun, weird, always different path</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="searider" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">~10:50</div>
+        <div class="block-title">SeaRider</div>
+        <div class="block-badge" style="background:var(--blush);border:1px solid var(--red-mid);color:var(--stone)">5</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step rule-note"><div class="step-dot"></div>Only if wait ≤25 min — otherwise skip</div>
+        <div class="step"><div class="step-dot"></div>Right next to Aquatopia</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="lunch" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">11:10</div>
+        <div class="block-title">Lunch — Casbah</div>
+        <div class="block-badge" style="background:var(--coral)">6</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="meal-tag">🍽 Food Stop</div>
+        <div class="step highlight"><div class="step-dot"></div>Aim 11:10 — beat the rush</div>
+        <div class="step"><div class="step-dot"></div>Easy, reliable, sit and rest</div>
+        <div class="step rule-note"><div class="step-dot"></div>Alt: Vulcania (Mysterious Island)</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="leagues" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">12:00</div>
+        <div class="block-title">20,000 Leagues</div>
+        <div class="block-badge">7</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>Mysterious Island ⭐</div>
+        <div class="step"><div class="step-dot"></div>Submarine ride under volcano</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="journey" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">~12:30</div>
+        <div class="block-title">Journey to the Center</div>
+        <div class="block-badge">8</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>Decide yes/no before the day ⭐</div>
+        <div class="step"><div class="step-dot"></div>Short drop, big experience</div>
+        <div class="step rule-note"><div class="step-dot"></div>Gyoza Dog nearby → grab one</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="sindbad" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">13:15</div>
+        <div class="block-title">Sindbad's Voyage</div>
+        <div class="block-badge">9</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>Slow, beautiful, zero stress ⭐</div>
+        <div class="step rule-note"><div class="step-dot"></div>Optional if tired — treat as a rest</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="app2" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">13:40</div>
+        <div class="block-title">App Check #2</div>
+        <div class="block-badge" style="background:var(--teal)">→</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step app-action"><div class="step-dot"></div>📱 Book missing ride (Peter Pan etc.)</div>
+        <div class="step highlight"><div class="step-dot"></div><strong>CLOSE APP →</strong> done for the day</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="steamer" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">14:00</div>
+        <div class="block-title">Transit Steamer Line</div>
+        <div class="block-badge" style="background:var(--teal)">10</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>Scenic loop of the whole park ⭐</div>
+        <div class="step"><div class="step-dot"></div>Sit, drift, no effort</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="gondola" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">14:45</div>
+        <div class="block-title">Railway + Gondola</div>
+        <div class="block-badge" style="background:var(--teal)">11</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step"><div class="step-dot"></div>Electric Railway if convenient</div>
+        <div class="step highlight"><div class="step-dot"></div>Gondolas if wait ≤30 min</div>
+        <div class="step rule-note"><div class="step-dot"></div>No rushing — save gondola for night if needed</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="fantasy" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">15:45</div>
+        <div class="block-title">Fantasy Springs</div>
+        <div class="block-badge" style="background:var(--teal)">12–14</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>❄️ Frozen (DPA pre-booked)</div>
+        <div class="step highlight"><div class="step-dot"></div>🌺 Rapunzel (DPA pre-booked)</div>
+        <div class="step highlight"><div class="step-dot"></div>🪝 Peter Pan (DPA pre-booked)</div>
+        <div class="step rule-note"><div class="step-dot"></div>Times may stack to ~18:30 — allow buffer</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="dinner" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">18:30</div>
+        <div class="block-title">Dinner</div>
+        <div class="block-badge" style="background:var(--coral)">🍽</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="meal-tag">🍽 Food Stop</div>
+        <div class="step"><div class="step-dot"></div>Casbah again (safe, consistent)</div>
+        <div class="step rule-note"><div class="step-dot"></div>Alt: quick service near harbor</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="show" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">19:10</div>
+        <div class="block-title">Believe! Sea of Dreams</div>
+        <div class="block-badge" style="background:var(--gold);color:var(--ink)">★</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>Arrive 19:10 to find your spot</div>
+        <div class="step"><div class="step-dot"></div>Show: ~19:30–20:00</div>
+        <div class="step rule-note"><div class="step-dot"></div>Don't overthink location — harbor has no bad view</div>
+      </div>
+    </div>
+
+    <div class="block" data-id="night" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">20:00</div>
+        <div class="block-title">Perfect Ending</div>
+        <div class="block-badge" style="background:var(--teal)">🌙</div>
+        <div class="check-circle">✓</div>
+      </div>
+      <div class="block-content">
+        <div class="step highlight"><div class="step-dot"></div>Gondolas at night ✨ (if not done)</div>
+        <div class="step"><div class="step-dot"></div>Aquatopia after dark</div>
+        <div class="step"><div class="step-dot"></div>Slow harbor walk — take it all in</div>
+      </div>
+    </div>
+
+  </div><!-- end blocks-grid -->
+
+  <div class="done-banner" id="done-banner">
+    <div class="done-banner-emoji">🎉</div>
+    <div class="done-banner-text">What a day.</div>
+    <div class="done-banner-sub">DisneySea: complete.</div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section-header" id="summary">
+    <div class="section-num">03</div>
+    <div class="section-title"><span>The whole day</span>One-Line Version</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-label">⚡ Quick reference</div>
+    <div class="one-liner">
+      <strong>Enter</strong> → book Frozen/Rapunzel → <strong>Soaring</strong> → Toy Story → Aquatopia → <strong>Lunch 11:10</strong> → 20k Leagues → Journey → Sindbad → <strong>Book #3</strong> → Steamer → Railway → Gondola → <strong>Fantasy Springs ×3</strong> → Dinner → <strong>Show 19:30</strong> → Gondola · Walk
+    </div>
+    <button class="reset-btn" onclick="resetAll()">↺ Reset all</button>
+  </div>
+
+</main>
+
+<script>
+  function updateProgress() {
+    const total = document.querySelectorAll('.block').length;
+    const done = document.querySelectorAll('.block.done').length;
+    const pct = Math.round((done / total) * 100);
+    const fill = document.getElementById('prog-fill');
+    const count = document.getElementById('prog-count');
+    const banner = document.getElementById('done-banner');
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = done + ' / ' + total;
+    if (banner) banner.classList.toggle('show', done === total);
+  }
+
+  function resetAll() {
+    document.querySelectorAll('.block').forEach(b => {
+      b.classList.remove('done');
+      const id = 'disney-' + b.dataset.id;
+      if (typeof persist === 'function') persist(id, false);
+    });
+    updateProgress();
+  }
+</script>
+<script src="checklist.js"></script>
+</body>
+</html>
