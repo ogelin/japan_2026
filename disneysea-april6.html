@@ -288,9 +288,10 @@
   }
 
   .block-badge {
-    width: 24px;
+    min-width: 24px;
     height: 24px;
-    border-radius: 50%;
+    border-radius: 12px;
+    padding: 0 6px;
     background: var(--red);
     color: var(--white);
     font-size: 10px;
@@ -686,7 +687,7 @@
       <div class="block-header">
         <div class="block-time">15:45</div>
         <div class="block-title">Fantasy Springs</div>
-        <div class="block-badge" style="background:var(--teal)">12–14</div>
+        <div class="block-badge" style="background:var(--teal);width:auto;min-width:auto;padding:0 10px;border-radius:12px;font-size:9px;letter-spacing:0;white-space:nowrap">12–14</div>
         <div class="check-circle">✓</div>
       </div>
       <div class="block-content">
